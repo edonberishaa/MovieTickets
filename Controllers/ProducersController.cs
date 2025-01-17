@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieTickets.Data;
 using MovieTickets.Data.Services;
+using MovieTickets.Models;
 
 namespace MovieTickets.Controllers
 {
@@ -29,6 +30,19 @@ namespace MovieTickets.Controllers
             {
                 return View(producerDetails);
             }
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        //POST: Actor
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("ProfilePictureURL,FullName,Bio")] Producer producer)
+        {
+            if (!ModelState.IsValid) return View(producer);
+
+            await _service.AddAsync(producer);
+            return RedirectToAction(nameof(Index));
         }
 
     }

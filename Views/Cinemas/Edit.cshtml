@@ -1,0 +1,63 @@
+﻿@model Cinema
+
+@{
+    ViewData["Title"] = "Update Cinema";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center text-black">Update Cinema</h1>
+            <hr />
+
+            <div class="text-center mb-4">
+                <img id="LogoPreview" class="img-thumbnail rounded-circle border-info" style="max-width: 150px;" />
+            </div>
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label asp-for="Logo" class="form-label fw-bold">Logo URL</label>
+                            <input asp-for="Logo" class="form-control" />
+                            <span asp-validation-for="Logo" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold">Name</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold">Bio</label>
+                            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-between">
+                    <input type="submit" value="Update" class="btn btn-outline-success" />
+                    <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('LogoPreview');
+            output.src = $("#Logo").val();
+        });
+
+        $("#Logo").on("input", function () {
+            var output = document.getElementById('LogoPreview');
+            output.src = $(this).val();
+        });
+    </script>
+}

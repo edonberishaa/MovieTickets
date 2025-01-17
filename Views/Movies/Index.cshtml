@@ -54,7 +54,7 @@
                     <!-- Card Footer -->
                     <div class="col-md-12">
                         <div class="card-footer bg-secondary d-flex justify-content-between">
-                            <a class="btn btn-outline-light"><i class="bi bi-eye-fill"></i> Show Details</a>
+                            <a class="btn btn-outline-light" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Show Details</a>
                             <a class="btn btn-success"><i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))</a>
                         </div>
                     </div>
